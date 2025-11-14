@@ -1,5 +1,5 @@
-#ifndef EQUIPO_H
-#define EQUIPO_H
+#ifndef ESCUDERIA_H
+#define ESCUDERIA_H
 
 #include <string>
 
