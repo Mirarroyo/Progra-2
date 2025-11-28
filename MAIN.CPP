@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Libro.h"
-#include "Alumno.h"
-#include "Biblio.h"
+#include "libro.h"
+#include "alumno.h"
+#include "biblio.h"
 using namespace std;
 
 int main() {
