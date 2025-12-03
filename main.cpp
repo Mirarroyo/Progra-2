@@ -17,13 +17,13 @@ void ejecutarMenu();
 
 
 void menu() {
-    cout << "\n===== SISTEMA DE BIBLIOTECA =====\n";
+    cout << "\nSISTEMA DE BIBLIOTECA \n";
     cout << "1. Ver libros físicos disponibles. \n";
     cout << "2. Ver Ebooks disponibles. \n";
     cout << "3. Registrar préstamo de libro físico. \n";
-    cout << "4. Registrar préstamo de Ebook. \n"; // Nueva opción
+    cout << "4. Registrar préstamo de Ebook. \n"; 
     cout << "5. Mostrar todos los préstamos físicos. \n";
-    cout << "6. Mostrar todos los préstamos de Ebook. \n"; // Nueva opción
+    cout << "6. Mostrar todos los préstamos de Ebook. \n"; 
     cout << "7. Salir \n"; // Cambió a 7
 }
 
