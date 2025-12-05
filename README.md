@@ -1,17 +1,31 @@
-# PUNTO Y APARTE
+# BIBLIOTECA
 
+# Contexto
+El programa simula el sistema de biblioteca simple. Se utiliza una estructura de clases basada en la herencia para clasificar los libros y la agregación para registrar las transacciones de préstamo. Así convirtiendo el sistema de bibliteca del Tec aun mas accesible y facil de usar.
 
-# PROBLEMA
-Es un programa que modela diferentes tipos de autos usados en la Fórmula 1. Representando objetos reales del deporte (como pilotos, autos y equipos) y permitir que el programa realice acciones simples como la comparación de los difrenetes tipos de autos en las mismas condiciones 
+# Funcionalidad
+El programa permite la gestión básica de los libros y los préstamos a alumnos:
 
-# FUNCIÓN 
-Por ahora el programa tendra 3 tipos de clases en Formula 1:
-Auto de CarreraF1
-Piloto 
-Escuderia
-Cada clases tiene aributos como (nombre del piloto, número del auto, nombre del equipo)
+  - Visualizar los libros físicos y los Ebooks disponibles.
 
-# COMO SE USA 
-Registrar pilotos, autos y equipos.
-Asignar pilotos a equipos.
-Mostrar la información completa de un piloto (auto y equipo incluidos)
+  - Registrar nuevos préstamos de ambos tipos de materiales a un alumno.
+
+  -  Visualizar los préstamos activos.
+
+# Consideraciones 
+El programa está hecho con C++ Standard y corre en todos los sistemas operativos.
+
+Para compilar y correr el proyecto, asegúrate de que todos los archivos .h y .cpp estén en la misma carpeta.
+
+Compilar: (en MacOS)
+
+g++ -o main main.cpp
+
+Correr: (en macOS)
+
+./biblioteca
+
+# Correciones 
+
+Cambien de proyecto, totalmente. 
+pero elimine variable globales en la parte de main como retro de Alejandro.
