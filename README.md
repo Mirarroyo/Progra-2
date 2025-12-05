@@ -1,7 +1,7 @@
 # BIBLIOTECA
 
 # Contexto
-El programa simula el sistema de biblioteca simple. Se utiliza una estructura de clases basada en la herencia para clasificar los libros y la agregación para registrar las transacciones de préstamo. Así convirtiendo el sistema de bibliteca del Tec aun mas accesible y facil de usar.
+El programa simula el sistema un biblioteca simple. Se utiliza una estructura de clases basada en la herencia para clasificar los libros y la agregación para registrar las transacciones de préstamo. Así convirtiendo el sistema de bibliteca del Tec aun mas accesible y facil de usar.
 
 # Funcionalidad
 El programa permite la gestión básica de los libros y los préstamos a alumnos:
