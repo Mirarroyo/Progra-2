@@ -23,7 +23,7 @@ g++ -o main main.cpp
 
 Correr: (en macOS)
 
-./biblioteca
+./main
 
 # Correciones 
 
