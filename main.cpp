@@ -105,9 +105,9 @@ void registrarPrestamoEbook(Biblioteca& Biblioteca1) {
     
     // Validación de entrada 
     while (!(cin >> indexLibro) || indexLibro < 1 || indexLibro > Biblioteca1.getNumEbooks()) {
-        cout << "Rspuesta no valida. Elige un numero del 1 al " << Biblioteca1.getNumEbooks() << endl;
+        cout << "Rspuesta no valida. " << Biblioteca1.getNumEbooks() << endl;
         cin.clear();
-        cout << "\nSelecciona el **número** del Ebook a prestar: ";
+        cout << "\nSelecciona el número del Ebook a prestar: ";
     }
 
     int idx = indexLibro - 1; 
