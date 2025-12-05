@@ -13,7 +13,8 @@ El programa permite la gestión básica de los libros y los préstamos a alumnos
   -  Visualizar los préstamos activos.
 
 # Diagrama ULM
-<img width="2578" height="1322" alt="Flowchart" src="https://github.com/user-attachments/assets/1a3a48e0-7ce3-421d-92a6-afd8d3a65de7" />
+<img width="2378" height="1314" alt="Flowchart (2)" src="https://github.com/user-attachments/assets/5e26a332-3ec8-43d0-b0fd-0584f2c1f20f" />
+
 
 
 # Consideraciones 
