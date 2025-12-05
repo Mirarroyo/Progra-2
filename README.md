@@ -4,7 +4,7 @@
 El programa simula el sistema un biblioteca simple. Se utiliza una estructura de clases basada en la herencia para clasificar los libros y la agregación para registrar las transacciones de préstamo. Así convirtiendo el sistema de bibliteca del Tec aun mas accesible y facil de usar.
 
 # Funcionalidad
-El programa permite la gestión básica de los libros y los préstamos a alumnos:
+El programa permite la administación básica de los libros y los préstamos a alumnos:
 
   - Visualizar los libros físicos y los Ebooks disponibles.
 
@@ -33,4 +33,5 @@ Correr: (en macOS)
 # Correciones 
 
 Cambien de proyecto, totalmente. 
-pero elimine variable globales en la parte de main como retro de Alejandro.
+1. Mejoré README, incorporé setter y getters
+2. Eliminé variable global
