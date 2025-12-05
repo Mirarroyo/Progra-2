@@ -1,108 +1,137 @@
+/**
+ * implementacion de enu principal 
+ * flujo de control del programa
+ * manejo de entradas y salidas e interacción con el usuario
+
+ */
 #include <iostream>
 #include <string>
 #include <limits> 
+
 #include "Biblioteca.h"
 #include "Alumno.h" 
+
 using namespace std;
-
-// Declaración global del objeto principal
-Biblioteca miBiblioteca;
-
-// Declaración de funciones (Procedimientos)
-void menu();
-void registrarPrestamoFisico();
-void registrarPrestamoEbook(); // Nueva función
-void ejecutarMenu();
-
-
+/**
+ * Muestra el menú de opciones al usuario
+ */
 
 void menu() {
-    cout << "\nSISTEMA DE BIBLIOTECA \n";
-    cout << "1. Ver libros físicos disponibles. \n";
-    cout << "2. Ver Ebooks disponibles. \n";
-    cout << "3. Registrar préstamo de libro físico. \n";
-    cout << "4. Registrar préstamo de Ebook. \n"; 
-    cout << "5. Mostrar todos los préstamos físicos. \n";
-    cout << "6. Mostrar todos los préstamos de Ebook. \n"; 
-    cout << "7. Salir \n"; // Cambió a 7
+    cout << "BIBLIOTECA" << endl;
+    cout << "1) Ver libros físicos disponibles." << endl;
+    cout << "2) Ver Ebooks disponibles." << endl;
+    cout << "3) Registrar préstamo de libro físico." << endl;
+    cout << "4) Registrar préstamo de Ebook." << endl; 
+    cout << "5) Mostrar todos los préstamos físicos." << endl;
+    cout << "6) Mostrar todos los préstamos de Ebook." << endl; 
+    cout << "7) Salir" << endl; 
 }
 
-
-void registrarPrestamoFisico() {
+/**
+ * Maneja la lógica para registrar un préstamo físico
+ * @param Biblioteca1 Referencia a la instancia de Biblioteca
+ * maneja entradas del usuario y valida selección 
+ */
+void registrarPrestamoFisico(Biblioteca & Biblioteca1) {
     string nombre, matricula;
     int indexLibro, dias;
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    // registro de alumno
 
     cout << "Nombre del alumno: ";
+    cin.ignore();
     getline(cin, nombre);
 
     cout << "Matrícula: ";
+    cin.ignore();
     getline(cin, matricula);
 
     Alumno a(nombre, matricula);
 
-    miBiblioteca.mostrarLibrosFisicos();
-    if (miBiblioteca.getNumLibFis() == 0) {
+    Biblioteca1.mostrarLibrosFisicos();
+    if (Biblioteca1.getNumLibFis() == 0) {
         return;
     }
 
-    cout << "\nSelecciona el **número** del libro a prestar: ";
-    cin >> indexLibro;
-
-    int idx = indexLibro - 1; 
+    cout << "\nSelecciona el número del libro por prestar: ";
     
-    if (idx >= 0 && idx < miBiblioteca.getNumLibFis()) {
-        LibroFisico libroAPrestar = miBiblioteca.getLibroFisico(idx); 
-
-        cout << "Días del préstamo: ";
-        cin >> dias;
-        
-        miBiblioteca.agregarPrestamoFisico(libroAPrestar, a, dias);
-        cout << "\n✔ Préstamo de libro físico registrado correctamente.\n";
-    } else {
-        cout << "\n⚠ Número de libro inválido.\n";
+    // Validación de entrada
+    while (!(cin >> indexLibro) || indexLibro < 1 || indexLibro > Biblioteca1.getNumLibFis()) {
+        cout << "Rspuesta no valida. " << Biblioteca1.getNumLibFis() << endl;
+        cin.clear();
+        cout << "\nSelecciona el número del libro por prestar: ";
     }
+
+    int idx = indexLibro - 1; // Convertir número de menú a índice de arreglo
+    
+    LibroFisico libroAPrestar = Biblioteca1.getLibroFisico(idx); 
+
+    cout << "Días del préstamo: ";
+    // Validación de entrada
+    while (!(cin >> dias) || dias <= 0) {
+        cout << "Días no válidos. Vuelve a intentarlo: ";
+        cin.clear();
+    }
+    
+    Biblioteca1.agregarPrestamoFisico(libroAPrestar, a, dias);
+    cout << "\n Préstamo registrado correctamente.\n";
 }
 
-void registrarPrestamoEbook() {
+/**
+ * Maneja la lógica para registrar un préstamo de Ebook
+ * @param Biblioteca1 Referencia a la instancia de Biblioteca
+ * maneja entradas del usuario y valida selección
+ */
+void registrarPrestamoEbook(Biblioteca& Biblioteca1) {
     string nombre, matricula;
     int indexLibro, dias;
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
     cout << "Nombre del alumno: ";
+    cin.ignore();
     getline(cin, nombre);
 
     cout << "Matrícula: ";
+    cin.ignore();
     getline(cin, matricula);
 
     Alumno a(nombre, matricula);
 
-    miBiblioteca.mostrarEbooks();
-    if (miBiblioteca.getNumEbooks() == 0) {
+    Biblioteca1.mostrarEbooks();
+    if (Biblioteca1.getNumEbooks() == 0) {
         return;
     }
 
-    cout << "\nSelecciona el numero del Ebook a prestar: ";
-    cin >> indexLibro;
+    cout << "\nSelecciona el número del Ebook por prestar: ";
+    
+    // Validación de entrada 
+    while (!(cin >> indexLibro) || indexLibro < 1 || indexLibro > Biblioteca1.getNumEbooks()) {
+        cout << "Rspuesta no valida. Elige un numero del 1 al " << Biblioteca1.getNumEbooks() << endl;
+        cin.clear();
+        cout << "\nSelecciona el **número** del Ebook a prestar: ";
+    }
 
     int idx = indexLibro - 1; 
     
-    if (idx >= 0 & idx < miBiblioteca.getNumEbooks()) {
-        Ebook ebookAPrestar = miBiblioteca.getEbook(idx); 
+    Ebook ebookAPrestar = Biblioteca1.getEbook(idx); 
 
-        cout << "Días del préstamo: ";
-        cin >> dias;
-        
-        miBiblioteca.agregarPrestamoEbook(ebookAPrestar, a, dias);
-        cout << "\nPréstamo de Ebook registrado correctamente.\n";
-    } else {
-        cout << "\n Número de Ebook inválido.\n";
+    cout << "Días del préstamo: ";
+    // Validación de entrada 
+    while (!(cin >> dias) || dias <= 0) {
+        cout << "Vuelve a intentarlo: ";
+        cin.clear();
     }
+    
+    Biblioteca1.agregarPrestamoEbook(ebookAPrestar, a, dias);
+    cout << "\nPréstamo registrado correctamente.\n";
 }
 
-void ejecutarMenu() {
+
+/**
+ * Ejecuta el ciclo principal del menú
+ * continúa hasta que el usuario decide salir
+ * @param Biblioteca1 Referencia a la instancia de Biblioteca
+ */
+void ejecutarMenu(Biblioteca& Biblioteca1) {
     int opcion = 0;
     const int SALIR = 7;
 
@@ -111,37 +140,33 @@ void ejecutarMenu() {
         menu();
         cout << "Opción: ";
 
-        if (!(cin >> opcion)) {
-            cout << "Entrada inválida. Intente de nuevo.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue; 
+        // Validación de entrada 
+        if (!(cin >> opcion) || opcion < 1 || opcion > 7) {
+            cout << "Opcion invalida." << endl;
+            cin.clear(); 
         }
 
         switch(opcion) {
             case 1:
-                miBiblioteca.mostrarLibrosFisicos();
+                Biblioteca1.mostrarLibrosFisicos();
                 break;
             case 2:
-                miBiblioteca.mostrarEbooks();
+                Biblioteca1.mostrarEbooks();
                 break;
             case 3:
-                registrarPrestamoFisico();
+                registrarPrestamoFisico(Biblioteca1);
                 break;
-            case 4: // Nuevo caso
-                registrarPrestamoEbook();
+            case 4: 
+                registrarPrestamoEbook(Biblioteca1);
                 break;
             case 5:
-                miBiblioteca.mostrarPrestamosFisicos();
+                Biblioteca1.mostrarPrestamosFisicos();
                 break;
-            case 6: // Nuevo caso
-                miBiblioteca.mostrarPrestamosEbooks();
+            case 6: 
+                Biblioteca1.mostrarPrestamosEbooks();
                 break;
             case SALIR:
-                cout << "Gracias por usar el sistema de biblioteca. ¡Hasta pronto!\n";
-                break;
-            default:
-                cout << "Opción no válida. Por favor, seleccione un número del menú.\n";
+                cout << "¡Hasta pronto!\n";
                 break;
         }
     }
@@ -151,9 +176,14 @@ void ejecutarMenu() {
 // Función principal
 int main() {
     
-    // Inicialización y llamada al menú
-    miBiblioteca.creaEjemplosLibros(); 
-    ejecutarMenu();
+    // La instancia del objeto Biblioteca
+    Biblioteca Biblioteca1; 
+    
+    // Inicialización de datos
+    Biblioteca1.creaEjemplosLibros(); 
+    
+    // Ejecución del menú
+    ejecutarMenu(Biblioteca1);
     
     return 0;
 }
